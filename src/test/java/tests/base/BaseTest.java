@@ -8,6 +8,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
+import pages.NewAccountModal;
 import tests.TestListener;
 
 import java.time.Duration;
@@ -15,7 +16,8 @@ import java.time.Duration;
 @Listeners(TestListener.class)
 public class BaseTest {
 
-    WebDriver driver;
+    public WebDriver driver;
+    public NewAccountModal newAccountModal;
 
     @Parameters({"browser"})
     @BeforeMethod
@@ -23,12 +25,14 @@ public class BaseTest {
     public void setup(@Optional("chrome") String browser, ITestContext context) {
         if (browser.equalsIgnoreCase("chrome")) {
             ChromeOptions options = new ChromeOptions();
+            options.addArguments("--disable-notification");
             options.addArguments("start-maximized");
             driver = new ChromeDriver(options);
         } else if (browser.equalsIgnoreCase("safari")) {
             driver = new FirefoxDriver();
         }
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        newAccountModal = new NewAccountModal(driver);
     }
 
     @AfterMethod(alwaysRun = true)
