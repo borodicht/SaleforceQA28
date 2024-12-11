@@ -1,11 +1,8 @@
 package pages;
 
-import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.PageFactory;
 
 public class LoginPageFactory extends BasePage{
@@ -21,9 +18,7 @@ public class LoginPageFactory extends BasePage{
     @FindBy (id = "password")
     WebElement passwordField;
 
-    @FindAll({
-    @FindBy(id = "ssss"), @FindBy(tagName = "hvhjvv")
-    })
+    @FindBy(id = "Login")
     WebElement loginButton;
 
     public void open() {

@@ -30,6 +30,12 @@ public class BaseTest {
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--disable-notifications");
             options.addArguments("start-maximized");
+            options.addArguments("--no-sandbox");
+            options.addArguments("--disable-dev-shm-usage");
+            options.addArguments("--disable-gpu");
+            options.addArguments("--disable-extensions");
+            options.addArguments("--remote-allow-origins=*");
+            options.addArguments("--headless");
             driver = new ChromeDriver(options);
         } else if (browser.equalsIgnoreCase("safari")) {
             driver = new FirefoxDriver();
